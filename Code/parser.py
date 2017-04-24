@@ -24,5 +24,7 @@ with open('../Data/training.1600000.csv', 'rb') as csvfile:
             #add tweet files to pos. test directory
             file_name = "../Data/test/pos/te" + str(j) + ".txt"
         text_file = open(file_name, "w")
-        text_file.write(row[5])
+        text_file.write( unicode(row[5], errors='ignore').encode('utf-8'))
         text_file.close()
+
+#http://stackoverflow.com/questions/6048085/writing-unicode-text-to-a-text-file
