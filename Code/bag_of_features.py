@@ -41,7 +41,7 @@ for f in pos_files:
                 pos_bof[word_tuple[0]] = 1
             else:
                 pos_bof[word_tuple[0]] +=1
-    if ct%50000 == 0:
+    if ct%100000 == 0:
         print ct
     ct+=1
 
@@ -67,13 +67,13 @@ for f in neg_files:
                 neg_bof[word_tuple[0]] = 1
             else:
                 neg_bof[word_tuple[0]] +=1
-    if ct%50000 == 0:
+    if ct%100000 == 0:
         print ct
     ct +=1
 
 #write BOFs to files
-with open('Data/pos_bof.pkl', 'wb') as f:
+with open('Data/pickles/pos_bof.pkl', 'wb') as f:
     pickle.dump(pos_bof, f, pickle.HIGHEST_PROTOCOL)
 
-with open('Data/neg_bof.pkl', 'wb') as f:
+with open('Data/pickles/neg_bof.pkl', 'wb') as f:
     pickle.dump(neg_bof, f, pickle.HIGHEST_PROTOCOL)

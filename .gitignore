@@ -1,2 +1,5 @@
-/Data
-/Code/temp.py
+/Data/test/
+/Data/train/
+/Data/training.1600000.csv
+/Data/testdata.manual.2009.06.14.csv
+/Data/pickles/

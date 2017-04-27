@@ -1,0 +1,20 @@
+C:\Users\krondak\Documents\CS589\cs589_final>python code/analytics.py
+The following data is about the positive class:
+   above_one_ct: 30129
+{":'[": 5, ':(': 1, ':)': 2, ':-[': 1, ':/': 649, ':-]': 1, ':-o': 26, '=]': 171, '=[': 28, ':-|': 14, ':-p': 126, ':o': 536, ':|': 326, ';)': 3093, "='(": 8, ':p': 652, '=(': 277, ':-/': 81, ';-p': 31, ":'(": 103, ':[': 54, ':-0': 6}
+   unfiltered #features: 109349
+   filtered #features: 30132
++=+=+=+=+=+=+=+=+=
+The following data is about the negative class:
+   above_one_ct: 27601
+{':/': 1145, ':(': 4, ':-[': 2, ":'[": 6, ':-]': 2, ':-o': 58, "='[": 6, '=[': 45, ':-|': 31, ':-p': 126, ':o': 784, ';-]': 2, ':|': 767, ';)': 1715, "='(": 20, ':p': 441, '=(': 100, ':-/': 179, ';-p': 6, ":'(": 851, '=]': 125, ':[': 57, ':-0': 7}
+   unfiltered #features: 91763
+   filtered #features: 27601
++=+=+=+=+=+=+=+=+=
+The following data is about thier overlap:
+   intersection length: 17027
+   unique #pos. filtered~features: 13105
+   unique #neg. filtered~features: 10574
++=+=+=+=+=+=+=+=+=
+   writing filtered data to pickle files...
+done.
