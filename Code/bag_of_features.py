@@ -77,3 +77,83 @@ with open('Data/pickles/pos_bof.pkl', 'wb') as f:
 
 with open('Data/pickles/neg_bof.pkl', 'wb') as f:
     pickle.dump(neg_bof, f, pickle.HIGHEST_PROTOCOL)
+
+###
+
+#process test data
+#240000 pos/neg files each
+# X & Y must have same shape as train data
+X, Y = [], []
+ct = 0
+pos_files = os.listdir('Data/test/pos')
+neg_files = os.listdir('Data/test/neg')
+
+for f in pos_files:
+    fo = open('Data/test/pos/%s' % f, 'r')
+    curr_bof = {}
+    text = fo.read().lower()
+    #add features to curr_bof
+
+    #first emoticons
+    for token in text.split(' '):
+        if token in emoticons_list:
+            if token not in curr_bof:
+                curr_bof[token] = 1
+            else:
+                curr_bof[token] += 1
+
+    #then verb/adj
+    for word_tuple in TextBlob(text).tags:
+        #check if verb or adj
+        if word_tuple[1] in important_pos:
+            if word_tuple[0] not in curr_bof:
+                curr_bof[word_tuple[0]] = 1
+            else:
+                curr_bof[word_tuple[0]] +=1
+    if ct%100000 == 0:
+        print ct
+    ct +=1
+
+    #append cur_bof to X
+    X.append(curr_bof)
+    #append class label to Y
+    Y.append(0)
+
+#same for neg
+for f in neg_files:
+    fo = open('Data/test/neg/%s' % f, 'r')
+    curr_bof = {}
+    text = fo.read().lower()
+    #add features to curr_bof
+
+    #first emoticons
+    for token in text.split(' '):
+        if token in emoticons_list:
+            if token not in curr_bof:
+                curr_bof[token] = 1
+            else:
+                curr_bof[token] += 1
+
+    #then verb/adj
+    for word_tuple in TextBlob(text).tags:
+        #check if verb or adj
+        if word_tuple[1] in important_pos:
+            if word_tuple[0] not in curr_bof:
+                curr_bof[word_tuple[0]] = 1
+            else:
+                curr_bof[word_tuple[0]] +=1
+    if ct%100000 == 0:
+        print ct
+    ct +=1
+
+    #append cur_bof to X
+    X.append(curr_bof)
+    #append class label to Y
+    Y.append(1)
+
+#save relevent data structures
+with open('Data/pickles/test_X.pkl', 'wb') as f:
+    pickle.dump(X, f, pickle.HIGHEST_PROTOCOL)
+
+with open('Data/pickles/test_Y.pkl', 'wb') as f:
+    pickle.dump(Y, f, pickle.HIGHEST_PROTOCOL)
