@@ -23,7 +23,7 @@ with open('Data/test.pkl', 'wb') as f:
 
 with open('Data/test.pkl', 'rb') as f:
     print pickle.load(f)
-'''
+
 
 #print len(emoticons_list)
 
@@ -40,3 +40,4 @@ print clf.predict([[-0.8, -1, 2]])
     #could combine class featur vectors?
 
     #http://scikit-learn.org/stable/modules/feature_extraction.html
+'''
